@@ -1,0 +1,53 @@
+Create Role
+http://localhost:8081/roles
+
+{
+    "roleName" : "user"
+}
+
+*no token*
+--------------------------------------------------------------------------
+Create User
+http://localhost:8081/api/v1/auth/register
+
+{
+    "name": "John Doe",
+    "collegeEmail": "johndoe2@college.com",
+    "personalEmail": "john.doe@example.com",
+    "accPassword": "password123",
+    "gender": "Male",
+    "contact": "123-456-7899",
+    "address": "123 Main St, City",
+    "rollNo": "123456",
+    "dob": "1990-05-15",
+    "roles": [
+        {
+        "roleId": 1,
+        "roleName":"super-admin"
+        }
+    ]
+}
+
+*no token*
+--------------------------------------------------------------------------
+
+Authenticate User
+http://localhost:8081/api/v1/auth/authenticate
+
+{
+    "collegeEmail": "johndoe2@college.com",
+    "accPassword": "password123"
+}
+
+*no token required*
+
+*OUTPUTS JWT TOKEN*
+--------------------------------------------------------------------------
+
+Find all Users
+http://localhost:8081/user/findAll
+
+*No body*
+
+*Token REQUIRED*
+
