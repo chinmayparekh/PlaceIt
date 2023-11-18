@@ -1,0 +1,28 @@
+pipeline
+{
+    environment
+    {
+        docker_image = ""
+    }
+    agent any
+    tools{
+        jdk 'JAVA_HOME'
+    }
+    stages
+    {
+        stage('Stage 1: Git Clone')
+        {
+            steps
+            {
+                git branch: 'master',
+                url:'https://github.com/chinmayparekh/PlaceIt.git'
+            }
+        }
+        stage('Stage 2: Build Backend') {
+            steps {
+                // Code compilation, testing, and artifact generation for Spring Boot
+                sh 'cd backend && mvn clean install'
+            }
+        }
+    }
+}
