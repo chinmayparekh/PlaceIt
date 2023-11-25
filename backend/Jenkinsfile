@@ -24,5 +24,42 @@ pipeline
                 sh 'cd backend && mvn clean install'
             }
         }
+        stage('Build Frontend') {
+            steps {
+                sh 'cd frontend && npm install && npm run build'
+            }
+        }
+        stage('Build Backend Docker Image') {
+            steps {
+                script {
+                    backendImage = docker.build backendImage, 'backend'
+                }
+            }
+        }
+        stage('Build Frontend Docker Image') {
+            steps {
+                script {
+                    frontendImage = docker.build frontendImage, 'frontend'
+                }
+            }
+        }
+        stage('Push Backend Image to Hub') {
+            steps {
+                script {
+                    docker.withRegistry('', 'DockerHubCred') {
+                        backendImage.push()
+                    }
+                }
+            }
+        }
+        stage('Push Frontend Image to Hub') {
+            steps {
+                script {
+                    docker.withRegistry('', 'DockerHubCred') {
+                        frontendImage.push()
+                    }
+                }
+            }
+        }
     }
 }

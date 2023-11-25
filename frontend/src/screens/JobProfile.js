@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import {
   MenuItem,
   InputLabel,
@@ -34,21 +34,35 @@ function JobProfile(props) {
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, [fetchData]);
 
-  const fetchData = async () => {
+  // const fetchData = async () => {
+  //   try {
+  //     const fetchedJobs = await getAllRelevantJobsAPICall(jwt);
+  //     // console.log("RELEVANT JOBS FOUND :", fetchedJobs);
+  //     setJobs([...fetchedJobs]);
+  //     setFilteredJobs([...fetchedJobs]);
+  //     // console.log(" JOBS SET TO :", jobs);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // };
+  const fetchData = useCallback(async () => {
     try {
       const fetchedJobs = await getAllRelevantJobsAPICall(jwt);
-      // console.log("RELEVANT JOBS FOUND :", fetchedJobs);
       setJobs([...fetchedJobs]);
       setFilteredJobs([...fetchedJobs]);
-      // console.log(" JOBS SET TO :", jobs);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  };
+  }, [jwt]); // Include jwt as a dependency
+
+  // Fetch data on initial render
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   useEffect(() => {
     console.log("In Use Effect");
