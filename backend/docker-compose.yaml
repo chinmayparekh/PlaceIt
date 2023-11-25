@@ -24,8 +24,8 @@ services:
       - springapimysql-net  
     environment:
       MYSQL_DATABASE: basics
-      MYSQL_USER: amila_one
-      MYSQL_PASSWORD: Amila_pw
-      MYSQL_ROOT_PASSWORD: Amila_Rpw
+      MYSQL_USER: kritin
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: 753951
 networks:
   springapimysql-net:
