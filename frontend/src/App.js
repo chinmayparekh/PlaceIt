@@ -9,8 +9,7 @@ import Register from "./screens/Register";
 import Calendar from "./screens/Calendar";
 import NavBar from "./components/Navbar";
 import { useSelector } from "react-redux";
-import AddJobsOrCompany from "./screens/AddJobsOrCompany";
-
+import AddJobOrCompany from "./components/AddJobOrCompany";
 function App() {
   const role = useSelector((state) => state.loginReducer.role);
 
@@ -23,7 +22,7 @@ function App() {
           path="/jobs"
           element={
             <>
-              <NavBar /> <AddJobsOrCompany />
+              <NavBar /> <AddJobOrCompany />
             </>
           }
         />

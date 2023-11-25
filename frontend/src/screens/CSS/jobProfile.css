@@ -1,0 +1,20 @@
+.div-container {
+  display: flex;
+}
+
+.selector-div {
+  padding: 20px;
+  flex: 1;
+}
+
+.selector {
+  width: 70%;
+  margin-left: 10px;
+}
+
+.vertical-line {
+  border-left: 2px solid;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+}

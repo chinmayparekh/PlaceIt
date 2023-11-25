@@ -1,0 +1,68 @@
+const notifs = [
+  {
+    nid: 1,
+    jobid: 1,
+    sentTime: "2023-09-27 10:00:00",
+    subject: "Example Subject 1",
+    body: "This is the body of the first email.",
+    sentUserId: "1",
+  },
+  {
+    nid: 2,
+    jobid: 2,
+    sentTime: "2023-09-27 11:30:00",
+    subject: "Example Subject 2",
+    body: "This is the body of the second email.",
+    sentUserId: "2",
+  },
+  {
+    nid: 3,
+    jobid: 3,
+    sentTime: "2023-09-27 14:45:00",
+    subject: "Example Subject 3",
+    body: "This is the body of the third email.",
+    sentUserId: "3",
+  },
+  {
+    nid: 4,
+    jobid: 4,
+    sentTime: "2023-09-27 16:20:00",
+    subject: "Example Subject 4",
+    body: "This is the body of the fourth email.",
+    sentUserId: "4",
+  },
+  {
+    nid: 5,
+    jobid: 5,
+    sentTime: "2023-09-28 09:15:00",
+    subject: "Example Subject 5",
+    body: "This is the body of the fifth email.",
+    sentUserId: "5",
+  },
+  {
+    nid: 6,
+    jobid: 6,
+    sentTime: "2023-09-28 14:30:00",
+    subject: "Example Subject 6",
+    body: "This is the body of the sixth email.",
+    sentUserId: "6",
+  },
+  {
+    nid: 7,
+    jobid: 7,
+    sentTime: "2023-09-28 16:45:00",
+    subject: "Example Subject 7",
+    body: "This is the body of the seventh email.",
+    sentUserId: "7",
+  },
+  {
+    nid: 8,
+    jobid: 8,
+    sentTime: "2023-09-29 10:30:00",
+    subject: "Example Subject 8",
+    body: "This is the body of the eighth email.",
+    sentUserId: "8",
+  },
+];
+
+export default notifs;

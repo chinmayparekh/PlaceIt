@@ -29,6 +29,7 @@ const sortJobList = (criteria, originalList) => {
       });
       break;
     default:
+      sortedList = originalList;
       break;
   }
   console.log("Returning SORTED LIST :", sortedList);
