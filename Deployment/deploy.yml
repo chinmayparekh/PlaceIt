@@ -13,14 +13,14 @@
 
     - name: Pull backend image
       docker_image:
-        name: kritinp/backend:latest
+        name: chinmay1104/backend:latest
         source: pull
       become: yes
       become_method: sudo
 
     - name: Pull frontend image
       docker_image:
-        name: kritinp/frontend:latest
+        name: chinmay1104/frontend:latest
         source: pull
       become: yes
       become_method: sudo

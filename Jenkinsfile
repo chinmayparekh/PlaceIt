@@ -2,8 +2,8 @@ pipeline
 {
     environment
     {
-        BACKEND_IMAGE_NAME = "kritinp/backend"
-        FRONTEND_IMAGE_NAME = "kritinp/frontend"
+        BACKEND_IMAGE_NAME = "chinmay1104/backend"
+        FRONTEND_IMAGE_NAME = "chinmay1104/frontend"
     }
     agent any
     tools{
@@ -70,6 +70,19 @@ pipeline
                     sh 'docker container prune -f'
                     sh 'docker image prune -f'
                 }
+            }
+        }
+        stage('Step 9: Ansible Deployment'){
+            steps
+            {
+                ansiblePlaybook becomeUser: null,
+                colorized: true,
+                credentialsId: 'localhost',
+                disableHostKeyChecking: true,
+                installation: 'Ansible',
+                inventory: 'Deployment/inventory',
+                playbook: 'Deployment/deploy.yml',
+                sudoUser: null
             }
         }
     }
