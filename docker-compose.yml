@@ -11,7 +11,7 @@ services:
       MYSQL_DATABASE: "placement_portal"
 
   backend:
-    image: backend:latest
+    image: chinmay1104/backend:latest
     container_name: backend_container
     ports:
       - "8081:8081"
@@ -21,7 +21,7 @@ services:
       SPRING_DATASOURCE_PASSWORD: "cp12345six"
 
   frontend:
-    image: frontend:latest
+    image: chinmay1104/frontend:latest
     container_name: frontend_container
     ports:
       - "3000:3000"     

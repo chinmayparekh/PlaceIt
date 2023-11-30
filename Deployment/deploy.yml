@@ -1,0 +1,32 @@
+---
+- name: Pull Docker Images and Run Docker Compose
+  hosts: localhost
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Pull MySQL image
+      docker_image:
+        name: mysql:latest
+        source: pull
+      become: yes
+      become_method: sudo
+
+    - name: Pull backend image
+      docker_image:
+        name: chinmay1104/backend:latest
+        source: pull
+      become: yes
+      become_method: sudo
+
+    - name: Pull frontend image
+      docker_image:
+        name: chinmay1104/frontend:latest
+        source: pull
+      become: yes
+      become_method: sudo
+    
+    - name: Run Docker Compose
+      docker_compose:
+        project_src: ..
+      become: yes
+      become_method: sudo

@@ -2,7 +2,8 @@ pipeline
 {
     environment
     {
-        docker_image = ""
+        BACKEND_IMAGE_NAME = "chinmay1104/backend"
+        FRONTEND_IMAGE_NAME = "chinmay1104/frontend"
     }
     agent any
     tools{
@@ -24,40 +25,50 @@ pipeline
                 sh 'cd backend && mvn clean install'
             }
         }
-        stage('Build Frontend') {
+        stage('Stage 3: Build Frontend') {
             steps {
                 sh 'cd frontend && npm install && npm run build'
             }
         }
-        stage('Build Backend Docker Image') {
+        stage('Stage 4: Build Backend Docker Image') {
             steps {
                 script {
-                    backendImage = docker.build backendImage, 'backend'
+                    docker.build(env.BACKEND_IMAGE_NAME, './backend') 
                 }
             }
         }
-        stage('Build Frontend Docker Image') {
+        stage('Stage 5: Build Frontend Docker Image') {
             steps {
                 script {
-                    frontendImage = docker.build frontendImage, 'frontend'
+                    docker.build(env.FRONTEND_IMAGE_NAME, './frontend') 
                 }
             }
         }
-        stage('Push Backend Image to Hub') {
+        stage('Stage 6: Build and Push Backend Docker Image') {
             steps {
                 script {
+                    def backendImage = docker.build(env.BACKEND_IMAGE_NAME, './backend')
                     docker.withRegistry('', 'DockerHubCred') {
-                        backendImage.push()
+                        backendImage.push('latest')
                     }
                 }
             }
         }
-        stage('Push Frontend Image to Hub') {
+        stage('Stage 7: Build and Push Frontend Docker Image') {
             steps {
                 script {
+                    def frontendImage = docker.build(env.FRONTEND_IMAGE_NAME, './frontend')
                     docker.withRegistry('', 'DockerHubCred') {
-                        frontendImage.push()
+                        frontendImage.push('latest')
                     }
+                }
+            }
+        }
+        stage('Stage 8: Clean Docker Images') {
+            steps {
+                script {
+                    sh 'docker container prune -f'
+                    sh 'docker image prune -f'
                 }
             }
         }
