@@ -7,9 +7,10 @@ services:
     ports:
       - "3307:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: "cp12345six"
-      MYSQL_DATABASE: "placement_portal"
-
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: "placeIt"
+    volumes:
+      - mysql_data:/var/lib/mysql
   backend:
     image: chinmay1104/backend:latest
     container_name: backend_container
@@ -24,7 +25,10 @@ services:
     image: chinmay1104/frontend:latest
     container_name: frontend_container
     ports:
-      - "3000:3000"     
+      - "3000:3000"    
+
+volumes:
+  mysql_data:
 
 # Add other configurations as required
 
