@@ -9,16 +9,22 @@
       docker_image:
         name: mysql:latest
         source: pull
+      become: yes
+      become_method: sudo
 
     - name: Pull backend image
       docker_image:
         name: kritinp/backend:latest
         source: pull
+      become: yes
+      become_method: sudo
 
     - name: Pull frontend image
       docker_image:
         name: kritinp/frontend:latest
         source: pull
+      become: yes
+      become_method: sudo
 
     - name: Copy docker-compose file to remote
       copy:
@@ -28,8 +34,12 @@
 
     - name: Run Docker Compose on localhost
       command: docker-compose -f ../docker-compose.yml up -d
+      become: yes
+      become_method: sudo
       when: inventory_hostname == 'localhost'
 
     - name: Run Docker Compose on remote
       command: docker-compose -f "{{ docker_compose_file }}" up -d
+      become: yes
+      become_method: sudo
       when: inventory_hostname != 'localhost'
