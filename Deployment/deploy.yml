@@ -3,7 +3,6 @@
   hosts: localhost
   vars:
     ansible_python_interpreter: /usr/bin/python3
-    docker_compose_file: /home/{{ ansible_user }}/docker-compose.yml
   tasks:
     - name: Pull MySQL image
       docker_image:
@@ -25,21 +24,8 @@
         source: pull
       become: yes
       become_method: sudo
-
-    - name: Copy docker-compose file to remote
-      copy:
-        src: ../docker-compose.yml
-        dest: "{{ docker_compose_file }}"
-      when: inventory_hostname != 'localhost'
-
-    - name: Run Docker Compose on localhost
+    
+    - name: Run Docker Compose
       command: docker-compose -f ../docker-compose.yml up -d
       become: yes
       become_method: sudo
-      when: inventory_hostname == 'localhost'
-
-    - name: Run Docker Compose on remote
-      command: docker-compose -f "{{ docker_compose_file }}" up -d
-      become: yes
-      become_method: sudo
-      when: inventory_hostname != 'localhost'
