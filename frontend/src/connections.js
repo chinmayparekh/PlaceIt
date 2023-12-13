@@ -276,6 +276,115 @@ const getAllRelevantJobsAPICall = async (jwt) => {
   return ret;
 };
 
+const getJobStagesAPICall = async (jwt, jobId) => {
+  const url = process.env.REACT_APP_API + "jobstages/getByJobId?jobId=" + jobId;
+  let ret;
+  await fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  })
+    .then(async (data) => {
+      ret = await data.json();
+    })
+    .catch((err) => {
+      ret = false;
+      console.log(err.message);
+    });
+  console.log("Returned is :", ret);
+  let returnMap = new Map();
+  let maxStage = 1;
+  for (let i = 0; i < ret.length; ++i) {
+    let val = ret[i];
+    console.log("VAL :", val);
+    let studentList;
+    if (returnMap.has(val.stage)) {
+      studentList = returnMap.get(val.stage);
+    } else {
+      studentList = [];
+    }
+    studentList.push({
+      rollNumber: val.applicantRollNumber,
+      name: val.applicantName,
+      email: val.applicantCollegeEmail,
+    });
+    returnMap.set(val.stage, studentList);
+    maxStage = maxStage > val.stage ? maxStage : val.stage;
+  }
+  console.log("return map :", returnMap);
+  let stages = [];
+  for (let stageNumber = 1; stageNumber <= maxStage; ++stageNumber) {
+    let stage = {
+      stageNumber: stageNumber,
+      jobId: jobId,
+      studentList: [...returnMap.get(stageNumber)],
+    };
+    stages.push(stage);
+  }
+  console.log(" RETURNING STAGES AS :", stages);
+  return stages;
+};
+//  {
+//         "jobStageID": 1,
+//         "jobId": 11,
+//         "stage": 1,
+//         "applicantRollNumber": "123443",
+//         "applicantCollegeEmail": "john3.doe@example.com",
+//         "applicantName": "User"
+//     },
+
+const addNewJobStageAPICall = async (stage, jwt) => {
+  const url =
+    process.env.REACT_APP_API +
+    "jobstages/add/studentsToNewStage?jobId=" +
+    stage.jobId +
+    "&stage=" +
+    stage.stageNumber;
+
+  console.log("Student list being sent :", JSON.stringify(stage.studentList));
+  await fetch(url, {
+    method: "POST",
+    body: JSON.stringify([...stage.studentList]),
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  })
+    .then((data) => {
+      // data = data.json();
+      console.log("Add new job stage returned :", data);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+const sendEmailNotification = async (emailData,jwt) => {
+  try {
+    console.log(JSON.stringify(emailData));
+    const response = await fetch(process.env.REACT_APP_API + "Email/sendMail", {
+      method: "POST",
+      body: JSON.stringify(emailData),
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${jwt}`,
+      },
+    });
+
+    if (response.ok) {
+      return "Notification sent successfully!";
+    } else {
+      return "Failed to send notification. Please try again.";
+    }
+  } catch (error) {
+    console.error("Error sending notification:", error);
+    return "An error occurred while sending the notification.";
+  }
+};
+
+
 export {
   loginAPICall,
   registerAPICall,
@@ -286,4 +395,54 @@ export {
   addAndGetCompanyIDAPICall,
   addHRsOfSameCompanyAPICall,
   getAllRelevantJobsAPICall,
+  getJobStagesAPICall,
+  addNewJobStageAPICall,
+  sendEmailNotification,
 };
+
+// const getJobStagesAPICallOLD = async (jwt, jobId) => {
+//   console.log("GETTING JOB STAGES");
+//   let students = [
+//     {
+//       userId: 1,
+//       rollNumber: "IMT2019001",
+//       name: "John Doe",
+//       email: "john.doe@example.com",
+//     },
+//     {
+//       userId: 2,
+//       rollNumber: "IMT2019001",
+//       name: "Jane Smith",
+//       email: "jane.smith@example.com",
+//     },
+//     {
+//       userId: 3,
+//       rollNumber: "IMT2019003",
+//       name: "Bob Johnson",
+//       email: "bob.johnson@example.com",
+//     },
+//     {
+//       userId: 4,
+//       rollNumber: "IMT2019004",
+//       name: "Alice Williams",
+//       email: "alice.williams@example.com",
+//     },
+//     {
+//       userId: 5,
+//       rollNumber: "IMT2019005",
+//       name: "Chris Anderson",
+//       email: "chris.anderson@example.com",
+//     },
+//   ];
+//   let stages = [];
+//   for (let i = 0; i < 1; ++i) {
+//     let stage = {
+//       stageNumber: i + 1,
+//       jobId: jobId,
+//       studentList: [...students],
+//     };
+//     stages.push(stage);
+//     // students.pop();
+//   }
+//   return stages;
+// };

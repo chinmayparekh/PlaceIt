@@ -5,7 +5,8 @@ function Description({ heading, body }) {
   return (
     <Box
       sx={{
-        margin: "1vh 0 1vh 0vw",
+        maxWidth: "70%",
+        margin: "1vh 15% 1vh 15%",
         padding: "1vh 0 1vh 0vh",
       }}
     >

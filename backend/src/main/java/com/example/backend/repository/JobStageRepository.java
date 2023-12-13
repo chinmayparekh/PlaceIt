@@ -10,7 +10,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface JobStageRepository extends JpaRepository<Job_Stage, Integer> {
     
-    List<Job_Stage> findByJobIdAndStage(int jobId, String stage);
-    List<Job_Stage> findByStage(String stage);
-    List<Job_Stage> findByApplicantId(String applicantId);
+    List<Job_Stage> findByJobIdAndStage(int jobId, Integer stage);
+    List<Job_Stage> findByStage(Integer stage);
+    List<Job_Stage> findByApplicantRollNumber(String applicantRollNumber);
+
+    List<Job_Stage> findByJobId(Integer jobId);
 }

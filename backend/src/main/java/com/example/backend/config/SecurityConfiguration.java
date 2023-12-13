@@ -28,7 +28,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.cors().and().csrf().disable().authorizeHttpRequests().requestMatchers("/api/v1/auth/demo-controller/admin-ping").hasAnyAuthority("ROLE_admin","ROLE_super-admin");
         http.cors().and().csrf().disable().authorizeHttpRequests().requestMatchers("/api/v1/auth/demo-controller/super-admin-ping").hasAuthority("ROLE_super-admin");
-        http.cors().and().csrf().disable().authorizeHttpRequests().requestMatchers("/api/v1/auth/register", "/api/v1/auth/authenticate","/roles","/jobTypes", "/hired", "/api/v1/jobs/find/relevantJobs").permitAll().anyRequest().authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authenticationProvider(authenticationProvider).addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+        http.cors().and().csrf().disable().authorizeHttpRequests().requestMatchers("/api/v1/auth/register", "/api/v1/auth/authenticate","/roles","/jobTypes", "/hired", "/api/v1/jobs/find/relevantJobs", "/api/v1/Email/sendMail").permitAll().anyRequest().authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authenticationProvider(authenticationProvider).addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 }

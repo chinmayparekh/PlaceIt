@@ -92,26 +92,9 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <mainClass>com.example.backend.BackendApplication</mainClass>
-                    <!-- Replace 'com.example.backend.BackendApplication' with your actual main class -->
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
-    <!--    <build>-->
-    <!--        <plugins>-->
-    <!--            <plugin>-->
-    <!--                <groupId>org.apache.maven.plugins</groupId>-->
-    <!--                <artifactId>maven-compiler-plugin</artifactId>-->
-    <!--                <version>3.8.1</version> &lt;!&ndash; Use a version compatible with Java 17 &ndash;&gt;-->
-    <!--                <configuration>-->
-    <!--                    <source>17</source>-->
-    <!--                    <target>17</target>-->
-    <!--                    <encoding>UTF-8</encoding>-->
-    <!--                </configuration>-->
-    <!--            </plugin>-->
-    <!--            &lt;!&ndash; Other plugins if any &ndash;&gt;-->
-    <!--        </plugins>-->
-    <!--    </build>-->
 
 </project>

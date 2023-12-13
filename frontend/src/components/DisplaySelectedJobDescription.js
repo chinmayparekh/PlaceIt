@@ -27,6 +27,8 @@ function DisplaySelectedJobDescription({ job }) {
       sx={{
         maxHeight: "20vh",
         overflowY: "scroll",
+        // display:"flex",
+        alignItems: "center",
       }}
     >
       <Description heading={"Eligibility"} body={eligibility} />

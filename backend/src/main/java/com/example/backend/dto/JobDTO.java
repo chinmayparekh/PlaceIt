@@ -3,6 +3,7 @@ package com.example.backend.dto;
 import java.sql.Date;
 import java.text.DateFormat;
 
+import com.example.backend.model.JOB_STATUS;
 import com.example.backend.model.Job;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -43,7 +44,14 @@ public class JobDTO {
 
     public Job getJob() throws Exception{
         Date date = convertStringToSqlDate(appDeadline);
-        Job job = new Job(jobId,jobRole,companyId,date,status,salaryBreakup,eligibility,addiInfo,spocDetails);
+        JOB_STATUS jobStatus = JOB_STATUS.NOT_APPLIED;
+        if(status.equals("not applied"))jobStatus=JOB_STATUS.NOT_APPLIED;
+        else if(status.equals("applied"))jobStatus=JOB_STATUS.APPLIED;
+        else if(status.equals("offered"))jobStatus = JOB_STATUS.OFFERED;
+        else jobStatus = JOB_STATUS.REJECTED;
+
+        Job job = new Job(jobId,jobRole,companyId,date,jobStatus,salaryBreakup,eligibility,addiInfo,spocDetails);
+
         return job;
     }
 

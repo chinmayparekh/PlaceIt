@@ -18,14 +18,19 @@ import {
   CardActions,
   Button,
 } from "@mui/material";
+import { sendEmailNotification, getAllCompaniesAPICall } from "../connections";
+import { useSelector } from "react-redux";
 
-const selectList = ["List 1", "List 2", "List 3", "List 4", "List 5", "List 6"];
+
+const selectList = ["kritinp@gmail.com"];
 
 function CreateNotification(props) {
   const [listSelected, setListSelected] = useState([]);
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
   const [createNoice, setCreateNotice] = useState(true);
+  const jwt = useSelector((state) => state.loginReducer.token);
+
   const select = (e) => {
     const {
       target: { value },
@@ -35,7 +40,19 @@ function CreateNotification(props) {
       typeof value === "string" ? value.split(",") : value
     );
   };
-  const sendNotification = (e) => {
+  const sendNotification = async (e) => {
+
+    e.preventDefault();
+
+
+    const emailData = {
+      recipient: listSelected[0],
+      subject: subject,
+      body: body,
+    };
+    console.log(emailData);
+    const status = await sendEmailNotification(emailData, jwt);
+
     // Send notification
     const currTime = new Date();
     alert("Notification sent!");

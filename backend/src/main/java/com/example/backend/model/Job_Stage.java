@@ -25,9 +25,9 @@ public class Job_Stage {
     private int jobId;
 
     @Column(name = "stage")
-    private String stage;
+    private Integer stage;
 
-    @Column(name = "applicantId")
-    private String applicantId;
+    @Column(name = "applicantRollNumber")
+    private String applicantRollNumber;
 }
 

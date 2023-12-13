@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MenuItem,
   InputLabel,
@@ -9,6 +9,7 @@ import {
   Stack,
   Divider,
   Container,
+  TextField,
 } from "@mui/material";
 import "./CSS/jobProfile.css";
 import { useSelector } from "react-redux";
@@ -21,6 +22,7 @@ function JobProfile(props) {
   const [positionType, setPositionType] = useState("");
   const [status, setStatus] = useState("");
   const [sortBy, setSortBy] = useState("");
+  const [searchText, setSearchText] = useState("");
   const jwt = useSelector((state) => state.loginReducer.token);
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [jobs, setJobs] = useState([]);
@@ -34,35 +36,49 @@ function JobProfile(props) {
     }
   };
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, [fetchData]);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  // const fetchData = async () => {
-  //   try {
-  //     const fetchedJobs = await getAllRelevantJobsAPICall(jwt);
-  //     // console.log("RELEVANT JOBS FOUND :", fetchedJobs);
-  //     setJobs([...fetchedJobs]);
-  //     setFilteredJobs([...fetchedJobs]);
-  //     // console.log(" JOBS SET TO :", jobs);
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //   }
-  // };
-  const fetchData = useCallback(async () => {
+  const fetchData = async () => {
     try {
       const fetchedJobs = await getAllRelevantJobsAPICall(jwt);
+      // console.log("RELEVANT JOBS FOUND :", fetchedJobs);
       setJobs([...fetchedJobs]);
       setFilteredJobs([...fetchedJobs]);
+      // console.log(" JOBS SET TO :", jobs);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  }, [jwt]); // Include jwt as a dependency
+  };
 
-  // Fetch data on initial render
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+  const handleReset = async (e) => {
+    setPositionType("");
+    setStatus("");
+    setSortBy("");
+    setFilteredJobs(jobs);
+  };
+
+  const onChangeSearchText = async (e) => {
+    setSearchText(e.target.value);
+    const updatedText = e.target.value.toLowerCase();
+    if (updatedText.length === 0) {
+      return;
+    }
+    handleReset(undefined);
+    let newCompanyList = [];
+    for (let i = 0; i < jobs.length; ++i) {
+      if (
+        jobs[i].companyName.toLowerCase().includes(updatedText) ||
+        jobs[i].jobRole.toLowerCase().includes(updatedText)
+        // jobs[i].eligibility.toLowerCase().includes(updatedText) ||
+        // jobs[i].addiInfo.toLowerCase().includes(updatedText)
+      ) {
+        newCompanyList.push(jobs[i]);
+      }
+    }
+    setFilteredJobs(newCompanyList);
+  };
 
   useEffect(() => {
     console.log("In Use Effect");
@@ -194,12 +210,7 @@ function JobProfile(props) {
           <Button
             variant="contained"
             className="selector"
-            onClick={() => {
-              setPositionType("");
-              setStatus("");
-              setSortBy("");
-              setFilteredJobs(jobs);
-            }}
+            onClick={handleReset}
           >
             Reset Filters
           </Button>
@@ -215,23 +226,43 @@ function JobProfile(props) {
           justifyContent: "space-around",
         }}
       >
-        <Box sx={{ overflow: "scroll", maxHeight: "80vh" }}>
-          {filteredJobs.map((value, index) => {
-            return (
-              <JobCard
-                details={value}
-                key={index}
-                onSelect={setJobSelected}
-              ></JobCard>
-            );
-          })}
+        <Box sx={{ width: "25vw" }}>
+          {/* ADD search bar */}
+          <TextField
+            focused
+            value={searchText}
+            onChange={onChangeSearchText}
+            sx={{
+              color: "blue",
+              marginTop: "1vh",
+              width: "80%",
+              marginBottom: "1vh",
+            }}
+            label="Search Job Profiles"
+            variant="outlined"
+          />
+          <Box sx={{ overflow: "scroll", maxHeight: "80vh" }}>
+            {filteredJobs.map((value, index) => {
+              return (
+                <JobCard
+                  details={value}
+                  key={index}
+                  onSelect={setJobSelected}
+                ></JobCard>
+              );
+            })}
+          </Box>
         </Box>
+
         <Divider orientation="vertical" />
         {/* <Stack> */}
         {/* Container with the details of the job selected */}
-        <Container style={{ width: "60vw" }}>
+        <Container style={{ width: "75vw" }}>
           {jobSelected !== undefined || jobSelected != null ? (
-            <DisplaySelectedJob job={jobSelected}></DisplaySelectedJob>
+            <DisplaySelectedJob
+              key={jobSelected.jobId}
+              job={jobSelected}
+            ></DisplaySelectedJob>
           ) : (
             <></>
           )}

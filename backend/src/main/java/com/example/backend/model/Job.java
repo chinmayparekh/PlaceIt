@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,7 +26,6 @@ public class Job {
 
     @Column(name = "jobRole")
     private String jobRole;
-
     
     @Column(name = "companyId")
     private int companyId;
@@ -34,13 +34,7 @@ public class Job {
     private Date appDeadline;
 
     @Column(name = "status")
-    private String status;
-
-//    @Column(name = "category")
-//    private String category;
-
-//    @Column(name = "salary")
-//    private float salary;
+    private JOB_STATUS status;
 
     @Column(name = "salaryBreakup")
     private String salaryBreakup;
@@ -50,7 +44,6 @@ public class Job {
 
     @Column(name = "addiInfo")
     private String addiInfo;
-
 
     @Column(name = "spoc_detail")
     private String spocDetails;

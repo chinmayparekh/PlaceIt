@@ -22,9 +22,11 @@ function JobCard({ details, onSelect }) {
   return (
     <Card
       style={{
-        width: "35vw",
-        padding: "1vh 1vw 1vh 1vw",
-        margin: "1vh 1vw 1vh 1vw",
+        width: "100%",
+        // maxWidth: "25vw",
+        overflowX: "scroll",
+        padding: "1vh 0vw 1vh 0vw",
+        margin: "1vh 0.5vw 1vh 0.5vw",
       }}
     >
       <CardHeader

@@ -1,5 +1,6 @@
 package com.example.backend.service;
 
+import com.example.backend.dto.Job_StageDTO;
 import com.example.backend.model.Job;
 import com.example.backend.model.Job_Stage;
 import com.example.backend.model.User;
@@ -9,6 +10,7 @@ import com.example.backend.repository.UserRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +35,7 @@ public class JobStageService {
 
         
         Optional<Job> tempJob = jobRepository.findById(jobStage.getJobId());
-        Optional<User> tempUser = userRepository.findById(jobStage.getApplicantId());
+        Optional<User> tempUser = userRepository.findById(jobStage.getApplicantRollNumber());
 
         if (tempJob.isPresent() && tempUser.isPresent())
         {
@@ -45,18 +47,35 @@ public class JobStageService {
         }
     }
 
-    public List<Job_Stage> getJobStageByJobIdAndStage(int jobId, String stage)
+    public List<Job_Stage> getJobStageByJobIdAndStage(int jobId, Integer stage)
     {
         return jobStageRepository.findByJobIdAndStage(jobId, stage);
     }
-    public List<Job_Stage> getJobStageByStage(String stage)
+    public List<Job_Stage> getJobStageByStage(Integer stage)
     {
         return jobStageRepository.findByStage(stage);
     }
     public List<Job_Stage> getJobStageByApplicantId(String rollNo)
     {
-        return jobStageRepository.findByApplicantId(rollNo);
+        return jobStageRepository.findByApplicantRollNumber(rollNo);
     }
 
 
+    public List<Job_StageDTO> getJobStagesByJobId(Integer jobId) {
+        List<Job_Stage> jobStages=  jobStageRepository.findByJobId(jobId);
+        List<Job_StageDTO> jobStageDTOS = new ArrayList<Job_StageDTO>();
+        for(Job_Stage jobStage:jobStages){
+            Job_StageDTO jobStageDTO = new Job_StageDTO();
+            jobStageDTO.setJobStageID(jobStage.getJobStageID());
+            jobStageDTO.setJobId(jobStage.getJobId());
+            jobStageDTO.setStage(jobStage.getStage());
+            jobStageDTO.setApplicantRollNumber(jobStage.getApplicantRollNumber());
+            User user = userRepository.findByRoll(jobStage.getApplicantRollNumber());
+            jobStageDTO.setApplicantCollegeEmail(user.getCollegeEmail());
+            jobStageDTO.setApplicantName(user.getName());
+
+            jobStageDTOS.add(jobStageDTO);
+        }
+        return jobStageDTOS;
+    }
 }

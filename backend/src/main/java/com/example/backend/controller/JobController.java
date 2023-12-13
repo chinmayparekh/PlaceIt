@@ -1,15 +1,18 @@
 package com.example.backend.controller;
 
+import com.example.backend.dto.EmailNotificationDTO;
 import com.example.backend.dto.JobDTO;
 import com.example.backend.model.Hired_Students;
 import com.example.backend.model.Job;
 import com.example.backend.model.JobDTOReturn;
+import com.example.backend.service.EmailNotificationService;
 import com.example.backend.service.HiredStudentsService;
 import com.example.backend.service.JobService;
 
 import jakarta.persistence.EntityNotFoundException;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -24,11 +27,13 @@ import org.springframework.web.bind.annotation.*;
 public class JobController {
     private final JobService jobService;
     private final HiredStudentsService hiredStudentsService;
+    private final EmailNotificationService emailNotificationService;
 
     @Autowired
-    public JobController(JobService jobService, HiredStudentsService hiredStudentsService) {
+    public JobController(JobService jobService, HiredStudentsService hiredStudentsService, EmailNotificationService emailNotificationService) {
         this.jobService = jobService;
         this.hiredStudentsService = hiredStudentsService;
+        this.emailNotificationService = emailNotificationService;
     }
 
     @PostMapping("/add")
@@ -39,6 +44,20 @@ public class JobController {
         {
 
             Boolean addedJob = jobService.addJob(jobDTO.getJob());
+            Set<String> emails = hiredStudentsService.getRelevantJobEmails(jobDTO);
+            System.out.println("emails: " + emails.size());
+
+            for (String email: emails) {
+                String body = "New job has been opened";
+                String subject = "New job";
+                EmailNotificationDTO emailNotificationDTO = new EmailNotificationDTO();
+
+                emailNotificationDTO.setRecipient(email);
+                emailNotificationDTO.setBody(body);
+                emailNotificationDTO.setSubject(subject);
+
+                emailNotificationService.sendSimpleMail(emailNotificationDTO);
+            }
             return new ResponseEntity<>(addedJob, HttpStatus.CREATED);
         }
         catch(EntityNotFoundException ex)
@@ -72,7 +91,8 @@ public class JobController {
 
     @PostMapping("/update/{statusFlag}")
     @PreAuthorize("hasAnyRole('admin', 'super-admin')")
-    public ResponseEntity<Job> updateJobStatus(@PathVariable int statusFlag, @RequestBody Job job) {
+    public ResponseEntity<Job> updateJobStatus(@PathVariable int statusFlag, @RequestBody JobDTO jobDTO) throws Exception {
+        Job job = jobDTO.getJob();
         return new ResponseEntity<>(jobService.updateJobStatus(job.getJobId(), job, statusFlag), HttpStatus.OK);
     }
 }

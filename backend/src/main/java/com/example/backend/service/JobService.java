@@ -1,6 +1,7 @@
 package com.example.backend.service;
 
 import com.example.backend.model.Company;
+import com.example.backend.model.JOB_STATUS;
 import com.example.backend.model.Job;
 import com.example.backend.repository.CompanyRepository;
 import com.example.backend.repository.JobRepository;
@@ -31,6 +32,7 @@ public class JobService {
             for(String jobtype: eligibility){
                 Job job2BeAdded = new Job(job);
                 job2BeAdded.setEligibility(jobtype);
+                job2BeAdded.setStatus(JOB_STATUS.NOT_APPLIED);
                 jobRepository.save(job2BeAdded);
             }
             return true;
