@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy the packaged JAR file into the container
 COPY target/backend-0.0.1-SNAPSHOT.jar /app/app.jar
-
+COPY logs logs
 # Expose the port the application runs on
 EXPOSE 8081
 
