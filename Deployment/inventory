@@ -1,1 +1,1 @@
-localhost ansible_connection=local ansible_become_password=753951 ansible_user=kritin
+localhost ansible_connection=local ansible_become_password=cp12345six ansible_user=Chinmay
