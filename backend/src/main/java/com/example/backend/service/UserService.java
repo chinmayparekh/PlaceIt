@@ -141,6 +141,7 @@ public class UserService implements UserDetailsService {
 
     public List<User> findAllUsers()
     {
+        logger.info("Finding all users");
         return userRepository.findAll();
     }
 }

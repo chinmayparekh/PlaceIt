@@ -1,0 +1,40 @@
+2023-12-13 19:42:19.944 [restartedMain] INFO  c.example.backend.BackendApplication - Starting BackendApplication using Java 17.0.3 with PID 19238 (/home/chinmay/chin/semester7/spe/Endterm Project/PlaceIt/backend/target/classes started by chinmay in /home/chinmay/chin/semester7/spe/Endterm Project/PlaceIt/backend)
+2023-12-13 19:42:19.947 [restartedMain] INFO  c.example.backend.BackendApplication - No active profile set, falling back to 1 default profile: "default"
+2023-12-13 19:42:20.017 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-12-13 19:42:20.018 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-12-13 19:42:21.371 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-12-13 19:42:21.462 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 81 ms. Found 8 JPA repository interfaces.
+2023-12-13 19:42:22.247 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2023-12-13 19:42:22.260 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-12-13 19:42:22.261 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2023-12-13 19:42:22.321 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-12-13 19:42:22.322 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2304 ms
+2023-12-13 19:42:22.627 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-12-13 19:42:22.697 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2023-12-13 19:42:22.701 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2023-12-13 19:42:22.873 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2023-12-13 19:42:23.036 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-12-13 19:42:23.058 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-12-13 19:42:23.499 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@8e6e611
+2023-12-13 19:42:23.501 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-12-13 19:42:23.876 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2023-12-13 19:42:24.695 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-12-13 19:42:24.919 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-12-13 19:42:25.211 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2023-12-13 19:42:25.877 [restartedMain] INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - Autowired annotation is not supported on static fields: private static final org.apache.logging.log4j.Logger com.example.backend.service.JobStageService.logger
+2023-12-13 19:42:25.931 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-12-13 19:42:26.236 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-12-13 19:42:26.272 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5de05a33, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5480b632, org.springframework.security.web.context.SecurityContextHolderFilter@bc5113c, org.springframework.security.web.header.HeaderWriterFilter@143926ab, org.springframework.web.filter.CorsFilter@4c82ff33, org.springframework.security.web.authentication.logout.LogoutFilter@ff6bbda, com.example.backend.config.JwtAuthenticationFilter@6333a59c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@22a6020e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1d5a94a4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4b0364e4, org.springframework.security.web.session.SessionManagementFilter@7bc31ef3, org.springframework.security.web.access.ExceptionTranslationFilter@7ca8f3dc, org.springframework.security.web.access.intercept.AuthorizationFilter@49d81633]
+2023-12-13 19:42:26.480 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2023-12-13 19:42:26.551 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2023-12-13 19:42:26.565 [restartedMain] INFO  c.example.backend.BackendApplication - Started BackendApplication in 7.359 seconds (process running for 8.117)
+2023-12-13 19:42:26.620 [restartedMain] INFO  c.example.backend.BackendApplication - SpringBoot Application Live
+2023-12-13 19:42:48.340 [http-nio-8081-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-12-13 19:42:48.342 [http-nio-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-12-13 19:42:48.344 [http-nio-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2023-12-13 19:42:57.384 [http-nio-8081-exec-3] INFO  c.example.backend.config.JwtService - Generating Token
+2023-12-13 19:42:57.515 [http-nio-8081-exec-3] INFO  c.example.backend.config.JwtService - Generating Token
+2023-12-13 19:42:57.526 [http-nio-8081-exec-3] INFO  c.e.backend.service.UserService - Finding all users
+2023-12-13 19:43:03.671 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-12-13 19:43:03.677 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-12-13 19:43:03.692 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
