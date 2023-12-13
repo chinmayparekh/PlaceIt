@@ -7,7 +7,7 @@ services:
     ports:
       - "3307:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: "cp12345six"
+      MYSQL_ROOT_PASSWORD: "password"
       MYSQL_DATABASE: "placement_portal"
     volumes:
       - mysql_data:/var/lib/mysql
@@ -17,9 +17,9 @@ services:
     ports:
       - "8081:8081"
     environment:
-      SPRING_DATASOURCE_URL: "jdbc:mysql://mysql_container:3306/placement_portal"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://mysql_container:3306/placement_portal?createDatabaseIfNotExist=true"
       SPRING_DATASOURCE_USERNAME: "root"
-      SPRING_DATASOURCE_PASSWORD: "cp12345six"
+      SPRING_DATASOURCE_PASSWORD: "password"
 
   frontend:
     image: chinmay1104/frontend:latest
