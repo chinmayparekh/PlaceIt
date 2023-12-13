@@ -4,6 +4,8 @@ pipeline
     {
         BACKEND_IMAGE_NAME = "chinmay1104/backend"
         FRONTEND_IMAGE_NAME = "chinmay1104/frontend"
+        DB_IMAGE_NAME = "mysql:latest"
+        DB_CONTAINER_NAME = "test_db"
     }
     agent any
     tools{
@@ -19,18 +21,29 @@ pipeline
                 url:'https://github.com/chinmayparekh/PlaceIt.git'
             }
         }
-        stage('Stage 2: Build Backend') {
+        stage('Stage 2: Setup Test DB') {
             steps {
-                // Code compilation, testing, and artifact generation for Spring Boot
-                sh 'cd backend && mvn clean install'
+                // Start a MySQL container for testing
+                sh 'docker run --name ${DB_CONTAINER_NAME} -e MYSQL_ROOT_PASSWORD=password -d ${DB_IMAGE_NAME}'
+
+                // Wait for the database to start
+                sh 'sleep 30'
             }
         }
-        stage('Stage 3: Build Frontend') {
+        stage('Stage 3: Test Backend') {
             steps {
-                sh 'cd frontend && npm install && npm run build'
+                // Run unit tests
+                sh 'cd backend && mvn test'
             }
         }
-        stage('Stage 4: Build and Push Backend Docker Image') {
+        stage('Stage 4: Delete Test DB') {
+            steps {
+                // Stop and remove the MySQL container
+                sh 'docker rm -f ${DB_CONTAINER_NAME}'
+            }
+        }
+        
+        stage('Stage 5: Build and Push Backend Docker Image') {
             steps {
                 script {
                     def backendImage = docker.build(env.BACKEND_IMAGE_NAME, './backend')
@@ -40,7 +53,7 @@ pipeline
                 }
             }
         }
-        stage('Stage 5: Build and Push Frontend Docker Image') {
+        stage('Stage 6: Build and Push Frontend Docker Image') {
             steps {
                 script {
                     def frontendImage = docker.build(env.FRONTEND_IMAGE_NAME, './frontend')
@@ -50,7 +63,7 @@ pipeline
                 }
             }
         }
-        stage('Stage 6: Clean Docker Images') {
+        stage('Stage 7: Clean Docker Images') {
             steps {
                 script {
                     sh 'docker container prune -f'
@@ -58,7 +71,7 @@ pipeline
                 }
             }
         }
-        stage('Step 7: Ansible Deployment')
+        stage('Stage 8: Ansible Deployment')
         {
             steps
             {

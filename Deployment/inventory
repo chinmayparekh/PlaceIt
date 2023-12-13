@@ -1,3 +1,4 @@
 localhost ansible_connection=local ansible_become_password=12345six ansible_user=chinmay
 [remote]
 103.156.19.244 ansible_user=chinmay ansible_password=12345six ansible_port=33351 ansible_become_password=12345six
+103.156.19.244 ansible_user=sumanth ansible_password=Sumanth123@ ansible_port=33348 ansible_become_password=Sumanth123@
