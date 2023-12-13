@@ -72,18 +72,5 @@ pipeline
                 sudoUser: null
             }
         }
-        stage('Step 9: Ansible Deployment'){
-            steps
-            {
-                ansiblePlaybook becomeUser: null,
-                colorized: true,
-                credentialsId: 'localhost',
-                disableHostKeyChecking: true,
-                installation: 'Ansible',
-                inventory: 'Deployment/inventory',
-                playbook: 'Deployment/deploy.yml',
-                sudoUser: null
-            }
-        }
     }
 }
