@@ -30,21 +30,7 @@ pipeline
                 sh 'cd frontend && npm install && npm run build'
             }
         }
-        stage('Stage 4: Build Backend Docker Image') {
-            steps {
-                script {
-                    docker.build(env.BACKEND_IMAGE_NAME, './backend') 
-                }
-            }
-        }
-        stage('Stage 5: Build Frontend Docker Image') {
-            steps {
-                script {
-                    docker.build(env.FRONTEND_IMAGE_NAME, './frontend') 
-                }
-            }
-        }
-        stage('Stage 6: Build and Push Backend Docker Image') {
+        stage('Stage 4: Build and Push Backend Docker Image') {
             steps {
                 script {
                     def backendImage = docker.build(env.BACKEND_IMAGE_NAME, './backend')
@@ -54,7 +40,7 @@ pipeline
                 }
             }
         }
-        stage('Stage 7: Build and Push Frontend Docker Image') {
+        stage('Stage 5: Build and Push Frontend Docker Image') {
             steps {
                 script {
                     def frontendImage = docker.build(env.FRONTEND_IMAGE_NAME, './frontend')
@@ -64,12 +50,26 @@ pipeline
                 }
             }
         }
-        stage('Stage 8: Clean Docker Images') {
+        stage('Stage 6: Clean Docker Images') {
             steps {
                 script {
                     sh 'docker container prune -f'
                     sh 'docker image prune -f'
                 }
+            }
+        }
+        stage('Step 7: Ansible Deployment')
+        {
+            steps
+            {
+                ansiblePlaybook becomeUser: null,
+                colorized: true,
+                credentialsId: 'localhost',
+                disableHostKeyChecking: true,
+                installation: 'Ansible',
+                inventory: 'Deployment/inventory',
+                playbook: 'Deployment/deploy.yml',
+                sudoUser: null
             }
         }
         stage('Step 9: Ansible Deployment'){
