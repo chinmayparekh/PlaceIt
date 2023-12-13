@@ -1,6 +1,6 @@
 ---
 - name: Pull Docker Images and Run Docker Compose
-  hosts: localhost, remote
+  hosts: localhost
   vars:
     ansible_python_interpreter: /usr/bin/python3
     docker_compose_file: /home/{{ ansible_user }}/docker-compose.yml
