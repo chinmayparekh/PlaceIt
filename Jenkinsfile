@@ -2,8 +2,8 @@ pipeline
 {
     environment
     {
-        BACKEND_IMAGE_NAME = "chinmay1104/backend"
-        FRONTEND_IMAGE_NAME = "chinmay1104/frontend"
+        BACKEND_IMAGE_NAME = "kritinp/backend"
+        FRONTEND_IMAGE_NAME = "kritinp/frontend"
     }
     agent any
     tools{
