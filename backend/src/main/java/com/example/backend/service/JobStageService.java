@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,16 +26,18 @@ public class JobStageService {
     private final UserRepository userRepository;
 
     @Autowired
+	private static final Logger logger = LogManager.getLogger(JobStageService.class);
+
     public JobStageService(JobStageRepository jobStageRepository, JobRepository jobRepository, UserRepository userRepository) {
         this.jobStageRepository = jobStageRepository;
         this.jobRepository = jobRepository;
-        this.userRepository = userRepository;
+        this.userRepository = userRepository;   
     }
 
 
     public Job_Stage addJobStage(Job_Stage jobStage) {
 
-        
+        logger.info("Adding job stage");
         Optional<Job> tempJob = jobRepository.findById(jobStage.getJobId());
         Optional<User> tempUser = userRepository.findById(jobStage.getApplicantRollNumber());
 
@@ -43,6 +47,7 @@ public class JobStageService {
         }
         else
         {
+            logger.error("Job or User not found");
             throw new EntityNotFoundException("Job or User not found");
         }
     }
@@ -62,6 +67,7 @@ public class JobStageService {
 
 
     public List<Job_StageDTO> getJobStagesByJobId(Integer jobId) {
+        logger.info("Finding job stages by jobID: " + jobId);
         List<Job_Stage> jobStages=  jobStageRepository.findByJobId(jobId);
         List<Job_StageDTO> jobStageDTOS = new ArrayList<Job_StageDTO>();
         for(Job_Stage jobStage:jobStages){

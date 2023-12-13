@@ -11,11 +11,14 @@ import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class JobService {
+	private static final Logger logger = LogManager.getLogger(JobService.class);
     private final JobRepository jobRepository;
     private final CompanyRepository companyRepository;
 
@@ -26,6 +29,7 @@ public class JobService {
     }
 
     public Boolean addJob(Job job) {
+        logger.info("Adding job");
         Optional<Company> tempCompany = companyRepository.findById(job.getCompanyId());
         String[] eligibility = job.getEligibility().split(",");
         if(tempCompany.isPresent()){
@@ -39,23 +43,26 @@ public class JobService {
         }
         else
         {
+            logger.error("Company does not exist");
             throw new EntityNotFoundException("Company Does Not Exist");
         }
     }
 
     public List<Job> findAll()
     {
+        logger.info("Finding all jobs");
         return jobRepository.findAll();
     }
 
     public List<Job> findByCompanyName(String companyName)
     {
+        logger.debug("Finding by company name: ", companyName);
         return jobRepository.findJobsByCompanyName(companyName);
     }
 
     public Job updateJobStatus(int jobId, Job newJob, int statusFlag) {
         Optional<Job> existingJob = jobRepository.findById(jobId);
-
+        logger.info("Updating job status");
         if (existingJob.isPresent()) {
             Job jobToUpdate = existingJob.get();
 
@@ -77,7 +84,7 @@ public class JobService {
             // Save the updated job to the database
             return jobRepository.save(jobToUpdate);
         } else {
-            // Handle the case where the job with the given jobId is not found
+            logger.error("Job with ID " + jobId + " not found");
             throw new EntityNotFoundException("Job with ID " + jobId + " not found");
         }
     }

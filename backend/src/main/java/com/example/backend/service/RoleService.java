@@ -25,10 +25,4 @@ public class RoleService {
         roleRepository.save(role);
     }
 
-    // @Autowired
-    // public void getUsers(int user_id)
-    // {
-        
-    // }
-
 }

@@ -4,8 +4,13 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import com.example.backend.service.CompanyService;
 
 import java.security.Key;
 import java.util.*;
@@ -13,8 +18,11 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
+	private static final Logger logger = LogManager.getLogger(JwtService.class);
+
     private static final String SECRET_KEY = "63fc255a9328babb6958bbcefd1f0db285c8484dafb7d6b9a8a0f5e925a9004d";
     public String extractCollegeEmail(String token) {
+        logger.info("Generating Token");
         return extractClaim(token, Claims::getSubject);
     }
 

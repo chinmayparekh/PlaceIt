@@ -6,6 +6,9 @@ import com.example.backend.model.Role;
 import com.example.backend.model.User;
 import com.example.backend.repository.UserRepository;
 import com.example.backend.repository.RoleRepository;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,6 +25,7 @@ import java.util.Set;
 
 @Service
 public class UserService implements UserDetailsService {
+	private static final Logger logger = LogManager.getLogger(UserService.class);
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -69,7 +73,7 @@ public class UserService implements UserDetailsService {
         Set<Role> roles = new HashSet<>();
         if (userDTO.getRoles() != null) {
             for (Role role : userDTO.getRoles()) {
-//                System.out.println("ADDING ROLE" + role.getRoleName());
+               logger.info("ADDING ROLE" + role.getRoleName());
                 Optional<Role> fetchedRole = roleRepository.findById(role.getRoleId());
                 fetchedRole.ifPresent(roles::add);
 //                System.out.println("ADDED ROLE" + fetchedRole);
@@ -88,7 +92,7 @@ public class UserService implements UserDetailsService {
         AuthDTO authDto = new AuthDTO();
         authDto.setRollNo(user.getRollNo());
         authDto.setAccPassword(user.getAccPassword());
-//        System.out.println("USER FOUND" + user.getRollNo() +" "+ user.getName());
+       logger.info("USER FOUND" + user.getRollNo() +" "+ user.getName());
         return authDto;
     }
 
@@ -100,7 +104,9 @@ public class UserService implements UserDetailsService {
             user.setRoles(roles);
             return userRepository.save(user);
         }
-        else throw new Exception("User not found!");
+        else {
+            logger.error("User not found");
+            throw new Exception("User not found!");}
     }
 
     public User findUserByCollegeEmail(String collegeEmail) throws UsernameNotFoundException{
@@ -119,12 +125,17 @@ public class UserService implements UserDetailsService {
                 if(role.isPresent()){
                     roleSet.add(role.get());
                 }
-                else throw new UsernameNotFoundException("Role not found!");
+                else{ 
+                    logger.error("Role not found");
+                    throw new UsernameNotFoundException("Role not found!");}
             }
             u.setRoles(roleSet);
             return u;
         }
-        else throw new UsernameNotFoundException("User is not found");
+        else{
+            logger.error("User not found");
+            throw new UsernameNotFoundException("User is not found");
+        } 
 //        return null;
     }
 

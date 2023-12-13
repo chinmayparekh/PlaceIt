@@ -7,6 +7,9 @@ import com.example.backend.repository.CompanyRepository;
 import com.example.backend.repository.HiredStudentsRepository;
 import com.example.backend.repository.JobRepository;
 import com.example.backend.repository.UserRepository;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +19,8 @@ import java.util.*;
 
 @Service
 public class HiredStudentsService {
+    private static final Logger logger = LogManager.getLogger(HiredStudentsService.class);
+
     private final HiredStudentsRepository hiredStudentsRepository;
     private final UserRepository userRepository;
     private final JobRepository jobRepository;
@@ -32,6 +37,7 @@ public class HiredStudentsService {
 
     @Transactional
     public void addNewEntry(HiredStudentsDTO hiredStudentsDTO) throws Exception {
+        logger.info("Adding new entry");
         Hired_Students student = new Hired_Students();
 
         student.setRollNo(hiredStudentsDTO.getRollNo());
@@ -43,7 +49,10 @@ public class HiredStudentsService {
         User user = userRepository.findByRoll(student.getRollNo());
 
         if (user != null) hiredStudentsRepository.save(student);
-        else throw new Exception("User not found!");
+        else{
+            logger.error("User not found!");
+            throw new Exception("User not found!");
+        }
     }
 
     public List<Job> getRelevantJobs(String rollNo) {
@@ -80,7 +89,7 @@ public class HiredStudentsService {
             }
         }
         System.out.println("relevant jobs"+relevant_jobs.size());
-
+        logger.info("relevant jobs:"+relevant_jobs.size());
         return relevant_jobs;
     }
 
@@ -150,6 +159,7 @@ public class HiredStudentsService {
                 }
             }
         }
+        logger.info("Emails Returned");
         return emails;
     }
 }
