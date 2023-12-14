@@ -12,12 +12,12 @@
 
     - name: Pull backend image
       docker_image:
-        name: kritinp/backend:latest
+        name: chinmay1104/backend:latest
         source: pull
 
     - name: Pull frontend image
       docker_image:
-        name: kritinp/frontend:latest
+        name: chinmay1104/frontend:latest
         source: pull
 
     - name: Copy docker-compose file to remote

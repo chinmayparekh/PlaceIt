@@ -2,8 +2,8 @@ pipeline
 {
     environment
     {
-        BACKEND_IMAGE_NAME = "kritinp/backend"
-        FRONTEND_IMAGE_NAME = "kritinp/frontend"
+        BACKEND_IMAGE_NAME = "chinmay1104/backend"
+        FRONTEND_IMAGE_NAME = "chinmay1104/frontend"
         DB_IMAGE_NAME = "mysql:latest"
         DB_CONTAINER_NAME = "test_db"
     }
