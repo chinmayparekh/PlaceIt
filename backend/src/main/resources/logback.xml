@@ -1,20 +1,22 @@
-<?xml version = "1.0" encoding = "UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <appender name = "STDOUT" class = "ch.qos.logback.core.ConsoleAppender">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>[%d{yyyy-MM-dd'T'HH:mm:ss.SSS'Z'}] [%C] [%t] [%L] [%-5p] %m%n</pattern>
+            <!-- Change timestamp format to ISO 8601 -->
+            <pattern>[%d{ISO8601}] [%C] [%t] [%L] [%-5p] %m%n</pattern>
         </encoder>
     </appender>
 
-    <appender name = "FILE" class = "ch.qos.logback.core.FileAppender">
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <File>../logs/mylog.log</File>
         <encoder>
-            <pattern>[%d{yyyy-MM-dd'T'HH:mm:ss.SSS'Z'}] [%C] [%t] [%L] [%-5p] %m%n</pattern>
+            <!-- Change timestamp format to ISO 8601 -->
+            <pattern>[%d{ISO8601}] [%C] [%t] [%L] [%-5p] %m%n</pattern>
         </encoder>
     </appender>
 
-    <root level = "INFO">
-        <appender-ref ref = "FILE"/>
-        <appender-ref ref = "STDOUT"/>
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>

@@ -1,39 +1,76 @@
-[2023-12-13T20:45:40.824Z] [org.springframework.boot.StartupInfoLogger] [main] [51] [INFO ] Starting BackendApplication v0.0.1-SNAPSHOT using Java 17.0.9 with PID 14918 (/home/chinmay/chin/semester7/spe/Endterm Project/PlaceIt/backend/target/backend-0.0.1-SNAPSHOT.jar started by chinmay in /home/chinmay/chin/semester7/spe/Endterm Project/PlaceIt/backend/target)
-[2023-12-13T20:45:40.829Z] [org.springframework.boot.SpringApplication] [main] [634] [INFO ] No active profile set, falling back to 1 default profile: "default"
-[2023-12-13T20:45:42.131Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [138] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[2023-12-13T20:45:42.221Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [208] [INFO ] Finished Spring Data repository scanning in 81 ms. Found 8 JPA repository interfaces.
-[2023-12-13T20:45:42.918Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8081 (http)
-[2023-12-13T20:45:42.928Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing ProtocolHandler ["http-nio-8081"]
-[2023-12-13T20:45:42.936Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting service [Tomcat]
-[2023-12-13T20:45:42.937Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/10.1.11]
-[2023-12-13T20:45:43.042Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing Spring embedded WebApplicationContext
-[2023-12-13T20:45:43.044Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [291] [INFO ] Root WebApplicationContext: initialization completed in 2149 ms
-[2023-12-13T20:45:43.297Z] [org.hibernate.jpa.internal.util.LogHelper] [main] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [name: default]
-[2023-12-13T20:45:43.367Z] [org.hibernate.Version] [main] [44] [INFO ] HHH000412: Hibernate ORM core version 6.2.6.Final
-[2023-12-13T20:45:43.371Z] [org.hibernate.cfg.Environment] [main] [191] [INFO ] HHH000406: Using bytecode reflection optimizer
-[2023-12-13T20:45:43.524Z] [org.hibernate.bytecode.internal.BytecodeProviderInitiator] [main] [53] [INFO ] HHH000021: Bytecode provider name : bytebuddy
-[2023-12-13T20:45:43.666Z] [org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo] [main] [87] [INFO ] No LoadTimeWeaver setup: ignoring JPA class transformer
-[2023-12-13T20:45:43.688Z] [com.zaxxer.hikari.HikariDataSource] [main] [110] [INFO ] HikariPool-1 - Starting...
-[2023-12-13T20:45:44.038Z] [com.zaxxer.hikari.pool.HikariPool] [main] [565] [INFO ] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@28f878a0
-[2023-12-13T20:45:44.041Z] [com.zaxxer.hikari.HikariDataSource] [main] [123] [INFO ] HikariPool-1 - Start completed.
-[2023-12-13T20:45:44.438Z] [org.hibernate.bytecode.internal.BytecodeProviderInitiator] [main] [53] [INFO ] HHH000021: Bytecode provider name : bytebuddy
-[2023-12-13T20:45:45.241Z] [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [main] [51] [INFO ] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[2023-12-13T20:45:45.456Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
-[2023-12-13T20:45:45.717Z] [org.springframework.data.jpa.repository.query.QueryEnhancerFactory] [main] [47] [INFO ] Hibernate is in classpath; If applicable, HQL parser will be used.
-[2023-12-13T20:45:46.419Z] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] [main] [553] [INFO ] Autowired annotation is not supported on static fields: private static final org.apache.logging.log4j.Logger com.example.backend.service.JobStageService.logger
-[2023-12-13T20:45:46.445Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [231] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-[2023-12-13T20:45:46.790Z] [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] [main] [58] [INFO ] Exposing 1 endpoint(s) beneath base path '/actuator'
-[2023-12-13T20:45:46.842Z] [org.springframework.security.web.DefaultSecurityFilterChain] [main] [54] [INFO ] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6c519e47, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3ce7490a, org.springframework.security.web.context.SecurityContextHolderFilter@48af5f38, org.springframework.security.web.header.HeaderWriterFilter@35ab4260, org.springframework.web.filter.CorsFilter@4768b95c, org.springframework.security.web.authentication.logout.LogoutFilter@5b1ff8cd, com.example.backend.config.JwtAuthenticationFilter@22c8ee48, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@71a2df1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2a9e754e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1530d0f2, org.springframework.security.web.session.SessionManagementFilter@76ffc17c, org.springframework.security.web.access.ExceptionTranslationFilter@22cd8ec2, org.springframework.security.web.access.intercept.AuthorizationFilter@5fc1e4fb]
-[2023-12-13T20:45:47.099Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting ProtocolHandler ["http-nio-8081"]
-[2023-12-13T20:45:47.116Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8081 (http) with context path ''
-[2023-12-13T20:45:47.130Z] [org.springframework.boot.StartupInfoLogger] [main] [57] [INFO ] Started BackendApplication in 6.704 seconds (process running for 7.393)
-[2023-12-13T20:45:47.175Z] [com.example.backend.BackendApplication] [main] [14] [INFO ] SpringBoot Application Live
-[2023-12-13T20:45:53.734Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-8081-exec-2] [173] [INFO ] Initializing Spring DispatcherServlet 'dispatcherServlet'
-[2023-12-13T20:45:53.734Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8081-exec-2] [532] [INFO ] Initializing Servlet 'dispatcherServlet'
-[2023-12-13T20:45:53.737Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8081-exec-2] [554] [INFO ] Completed initialization in 2 ms
-[2023-12-13T20:45:53.787Z] [com.example.backend.config.JwtService] [http-nio-8081-exec-2] [25] [INFO ] Generating Token
-[2023-12-13T20:45:54.126Z] [com.example.backend.config.JwtService] [http-nio-8081-exec-2] [25] [INFO ] Generating Token
-[2023-12-13T20:45:54.167Z] [com.example.backend.service.UserService] [http-nio-8081-exec-2] [144] [INFO ] Finding all users
-[2023-12-13T20:45:58.056Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [650] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
-[2023-12-13T20:45:58.058Z] [com.zaxxer.hikari.HikariDataSource] [SpringApplicationShutdownHook] [350] [INFO ] HikariPool-1 - Shutdown initiated...
-[2023-12-13T20:45:58.066Z] [com.zaxxer.hikari.HikariDataSource] [SpringApplicationShutdownHook] [352] [INFO ] HikariPool-1 - Shutdown completed.
+[2023-12-14T08:58:25.327Z] [org.springframework.boot.StartupInfoLogger] [main] [51] [INFO ] Starting BackendApplication v0.0.1-SNAPSHOT using Java 17.0.9 with PID 20735 (/home/kritin/College/SPE/PlaceIt/backend/target/backend-0.0.1-SNAPSHOT.jar started by kritin in /home/kritin/College/SPE/PlaceIt/backend/target)
+[2023-12-14T08:58:25.332Z] [org.springframework.boot.SpringApplication] [main] [634] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2023-12-14T08:58:28.138Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [138] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2023-12-14T08:58:28.333Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [208] [INFO ] Finished Spring Data repository scanning in 155 ms. Found 8 JPA repository interfaces.
+[2023-12-14T08:58:29.717Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8081 (http)
+[2023-12-14T08:58:29.730Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-12-14T08:58:29.735Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting service [Tomcat]
+[2023-12-14T08:58:29.736Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/10.1.11]
+[2023-12-14T08:58:29.876Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2023-12-14T08:58:29.881Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [291] [INFO ] Root WebApplicationContext: initialization completed in 4413 ms
+[2023-12-14T08:58:30.953Z] [org.hibernate.jpa.internal.util.LogHelper] [main] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [name: default]
+[2023-12-14T08:58:31.145Z] [org.hibernate.Version] [main] [44] [INFO ] HHH000412: Hibernate ORM core version 6.2.6.Final
+[2023-12-14T08:58:31.158Z] [org.hibernate.cfg.Environment] [main] [191] [INFO ] HHH000406: Using bytecode reflection optimizer
+[2023-12-14T08:58:31.889Z] [org.hibernate.bytecode.internal.BytecodeProviderInitiator] [main] [53] [INFO ] HHH000021: Bytecode provider name : bytebuddy
+[2023-12-14T08:58:32.208Z] [org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo] [main] [87] [INFO ] No LoadTimeWeaver setup: ignoring JPA class transformer
+[2023-12-14T08:58:32.233Z] [com.zaxxer.hikari.HikariDataSource] [main] [110] [INFO ] HikariPool-1 - Starting...
+[2023-12-14T08:58:32.687Z] [com.zaxxer.hikari.pool.HikariPool] [main] [565] [INFO ] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7f5eae0f
+[2023-12-14T08:58:32.690Z] [com.zaxxer.hikari.HikariDataSource] [main] [123] [INFO ] HikariPool-1 - Start completed.
+[2023-12-14T08:58:33.504Z] [org.hibernate.bytecode.internal.BytecodeProviderInitiator] [main] [53] [INFO ] HHH000021: Bytecode provider name : bytebuddy
+[2023-12-14T08:58:35.805Z] [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [main] [51] [INFO ] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2023-12-14T08:58:36.239Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2023-12-14T08:58:37.339Z] [org.springframework.data.jpa.repository.query.QueryEnhancerFactory] [main] [47] [INFO ] Hibernate is in classpath; If applicable, HQL parser will be used.
+[2023-12-14T08:58:38.617Z] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] [main] [553] [INFO ] Autowired annotation is not supported on static fields: private static final org.apache.logging.log4j.Logger com.example.backend.service.JobStageService.logger
+[2023-12-14T08:58:38.874Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [231] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2023-12-14T08:58:39.517Z] [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] [main] [58] [INFO ] Exposing 1 endpoint(s) beneath base path '/actuator'
+[2023-12-14T08:58:39.591Z] [org.springframework.security.web.DefaultSecurityFilterChain] [main] [54] [INFO ] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@c754401, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1da53f4f, org.springframework.security.web.context.SecurityContextHolderFilter@7c9372ed, org.springframework.security.web.header.HeaderWriterFilter@40538370, org.springframework.web.filter.CorsFilter@4e7eba9f, org.springframework.security.web.authentication.logout.LogoutFilter@3a4f8e8a, com.example.backend.config.JwtAuthenticationFilter@13fe5bb7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4ca970d5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6a2badb1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2df71be0, org.springframework.security.web.session.SessionManagementFilter@6d617b07, org.springframework.security.web.access.ExceptionTranslationFilter@26d73519, org.springframework.security.web.access.intercept.AuthorizationFilter@62de73eb]
+[2023-12-14T08:58:39.972Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting ProtocolHandler ["http-nio-8081"]
+[2023-12-14T08:58:39.997Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-12-14T08:58:40.073Z] [org.springframework.boot.StartupInfoLogger] [main] [57] [INFO ] Started BackendApplication in 15.251 seconds (process running for 16.149)
+[2023-12-14T08:58:40.195Z] [com.example.backend.BackendApplication] [main] [14] [INFO ] SpringBoot Application Live
+[2023-12-14T08:58:45.782Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-8081-exec-2] [173] [INFO ] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-12-14T08:58:45.783Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8081-exec-2] [532] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2023-12-14T08:58:45.790Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8081-exec-2] [554] [INFO ] Completed initialization in 3 ms
+[2023-12-14T08:58:55.949Z] [com.example.backend.config.JwtService] [http-nio-8081-exec-3] [25] [INFO ] Generating Token
+[2023-12-14T08:58:56.173Z] [com.example.backend.config.JwtService] [http-nio-8081-exec-3] [25] [INFO ] Generating Token
+[2023-12-14T08:58:56.307Z] [com.example.backend.service.EmailNotificationService] [http-nio-8081-exec-3] [36] [ERROR] Error sending mail
+[2023-12-14T08:59:05.372Z] [com.example.backend.service.EmailNotificationService] [http-nio-8081-exec-4] [36] [ERROR] Error sending mail
+[2023-12-14T08:59:16.315Z] [com.example.backend.config.JwtService] [http-nio-8081-exec-5] [25] [INFO ] Generating Token
+[2023-12-14T08:59:16.391Z] [com.example.backend.config.JwtService] [http-nio-8081-exec-5] [25] [INFO ] Generating Token
+[2023-12-14T08:59:20.370Z] [com.example.backend.service.EmailNotificationService] [http-nio-8081-exec-5] [33] [INFO ] Mail sent successfully
+[2023-12-14T09:00:12.720Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [650] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2023-12-14T09:00:12.728Z] [com.zaxxer.hikari.HikariDataSource] [SpringApplicationShutdownHook] [350] [INFO ] HikariPool-1 - Shutdown initiated...
+[2023-12-14T09:00:12.743Z] [com.zaxxer.hikari.HikariDataSource] [SpringApplicationShutdownHook] [352] [INFO ] HikariPool-1 - Shutdown completed.
+[2023-12-14 09:01:55,170] [org.springframework.boot.StartupInfoLogger] [main] [51] [INFO ] Starting BackendApplication v0.0.1-SNAPSHOT using Java 17.0.9 with PID 22888 (/home/kritin/College/SPE/PlaceIt/backend/target/backend-0.0.1-SNAPSHOT.jar started by kritin in /home/kritin/College/SPE/PlaceIt/backend/target)
+[2023-12-14 09:01:55,174] [org.springframework.boot.SpringApplication] [main] [634] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2023-12-14 09:01:56,572] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [138] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2023-12-14 09:01:56,701] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [208] [INFO ] Finished Spring Data repository scanning in 120 ms. Found 8 JPA repository interfaces.
+[2023-12-14 09:01:57,531] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [108] [INFO ] Tomcat initialized with port(s): 8081 (http)
+[2023-12-14 09:01:57,545] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-12-14 09:01:57,553] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting service [Tomcat]
+[2023-12-14 09:01:57,557] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/10.1.11]
+[2023-12-14 09:01:57,797] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2023-12-14 09:01:57,802] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [291] [INFO ] Root WebApplicationContext: initialization completed in 2536 ms
+[2023-12-14 09:01:58,380] [org.hibernate.jpa.internal.util.LogHelper] [main] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [name: default]
+[2023-12-14 09:01:58,458] [org.hibernate.Version] [main] [44] [INFO ] HHH000412: Hibernate ORM core version 6.2.6.Final
+[2023-12-14 09:01:58,464] [org.hibernate.cfg.Environment] [main] [191] [INFO ] HHH000406: Using bytecode reflection optimizer
+[2023-12-14 09:01:58,671] [org.hibernate.bytecode.internal.BytecodeProviderInitiator] [main] [53] [INFO ] HHH000021: Bytecode provider name : bytebuddy
+[2023-12-14 09:01:58,852] [org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo] [main] [87] [INFO ] No LoadTimeWeaver setup: ignoring JPA class transformer
+[2023-12-14 09:01:58,877] [com.zaxxer.hikari.HikariDataSource] [main] [110] [INFO ] HikariPool-1 - Starting...
+[2023-12-14 09:01:59,211] [com.zaxxer.hikari.pool.HikariPool] [main] [565] [INFO ] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3c782d8e
+[2023-12-14 09:01:59,214] [com.zaxxer.hikari.HikariDataSource] [main] [123] [INFO ] HikariPool-1 - Start completed.
+[2023-12-14 09:01:59,578] [org.hibernate.bytecode.internal.BytecodeProviderInitiator] [main] [53] [INFO ] HHH000021: Bytecode provider name : bytebuddy
+[2023-12-14 09:02:00,356] [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [main] [51] [INFO ] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2023-12-14 09:02:00,554] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2023-12-14 09:02:00,848] [org.springframework.data.jpa.repository.query.QueryEnhancerFactory] [main] [47] [INFO ] Hibernate is in classpath; If applicable, HQL parser will be used.
+[2023-12-14 09:02:01,969] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] [main] [553] [INFO ] Autowired annotation is not supported on static fields: private static final org.apache.logging.log4j.Logger com.example.backend.service.JobStageService.logger
+[2023-12-14 09:02:02,282] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [231] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2023-12-14 09:02:02,888] [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] [main] [58] [INFO ] Exposing 1 endpoint(s) beneath base path '/actuator'
+[2023-12-14 09:02:02,946] [org.springframework.security.web.DefaultSecurityFilterChain] [main] [54] [INFO ] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@97b5e6a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@29f95272, org.springframework.security.web.context.SecurityContextHolderFilter@340c57e0, org.springframework.security.web.header.HeaderWriterFilter@26d73519, org.springframework.web.filter.CorsFilter@c754401, org.springframework.security.web.authentication.logout.LogoutFilter@51e94b7d, com.example.backend.config.JwtAuthenticationFilter@2321e482, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7c9372ed, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4ca970d5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1da53f4f, org.springframework.security.web.session.SessionManagementFilter@760a2b6e, org.springframework.security.web.access.ExceptionTranslationFilter@76ffc17c, org.springframework.security.web.access.intercept.AuthorizationFilter@73da7f08]
+[2023-12-14 09:02:03,266] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting ProtocolHandler ["http-nio-8081"]
+[2023-12-14 09:02:03,280] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [220] [INFO ] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-12-14 09:02:03,300] [org.springframework.boot.StartupInfoLogger] [main] [57] [INFO ] Started BackendApplication in 8.551 seconds (process running for 9.266)
+[2023-12-14 09:02:03,362] [com.example.backend.BackendApplication] [main] [14] [INFO ] SpringBoot Application Live
+[2023-12-14 09:02:22,160] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [650] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2023-12-14 09:02:22,164] [com.zaxxer.hikari.HikariDataSource] [SpringApplicationShutdownHook] [350] [INFO ] HikariPool-1 - Shutdown initiated...
+[2023-12-14 09:02:22,180] [com.zaxxer.hikari.HikariDataSource] [SpringApplicationShutdownHook] [352] [INFO ] HikariPool-1 - Shutdown completed.
