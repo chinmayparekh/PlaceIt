@@ -26,20 +26,18 @@ public class HRService {
         return hrRepository.save(hr);
     }
 
-    public List<HR> saveHRs(List<HR> hrList){
+    public List<HR> saveHRs(List<HR> hrList) {
         logger.info("HR List Retrieved");
         return hrRepository.saveAll(hrList);
     }
 
-    public HR getHRDetails(String name)
-    {
+    public HR getHRDetails(String name) {
         logger.info("HR ", name, " found");
         return hrRepository.findByName(name);
     }
 
-    public List<HR> getHrsByCompany(String companyName)
-    {
-        logger.info("HRs of ", companyName," found");
+    public List<HR> getHrsByCompany(String companyName) {
+        logger.info("HRs of ", companyName, " found");
         System.out.println(hrRepository.findByCompany_CompanyName(companyName));
         return hrRepository.findByCompany_CompanyName(companyName);
     }
