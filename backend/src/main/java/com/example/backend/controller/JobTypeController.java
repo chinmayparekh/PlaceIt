@@ -15,7 +15,9 @@ public class JobTypeController {
     private final JobTypeService jobTypeService;
 
     @Autowired
-    public JobTypeController(JobTypeService jobTypeService) { this.jobTypeService = jobTypeService; }
+    public JobTypeController(JobTypeService jobTypeService) {
+        this.jobTypeService = jobTypeService;
+    }
 
     @PostMapping
     public ResponseEntity<String> createJobType(@RequestBody JobTypeDTO jobTypeDTO) {

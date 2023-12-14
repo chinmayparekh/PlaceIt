@@ -28,10 +28,9 @@ public class UserController {
     public AuthDTO getUserByRoll(@RequestParam String rollNo) {
         return userService.getUserByRoll(rollNo);
     }
-    
+
     @GetMapping("/findAll")
-    public ResponseEntity<List<User>> findAllUsers()
-    {
+    public ResponseEntity<List<User>> findAllUsers() {
         return new ResponseEntity<>(userService.findAllUsers(), HttpStatus.OK);
     }
 
@@ -40,6 +39,5 @@ public class UserController {
         userService.createUser(userDTO);
         return ResponseEntity.ok("User created successfully");
     }
-
 
 }
