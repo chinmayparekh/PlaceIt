@@ -43,4 +43,8 @@ public class HRService {
         System.out.println(hrRepository.findByCompany_CompanyName(companyName));
         return hrRepository.findByCompany_CompanyName(companyName);
     }
+
+    public void removeHRById(int hrId) {
+        hrRepository.deleteById(hrId);
+    }
 }

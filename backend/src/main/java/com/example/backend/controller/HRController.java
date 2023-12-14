@@ -113,4 +113,10 @@ public class HRController {
     {
         return new ResponseEntity<HR>(hrService.getHRDetails(name), HttpStatus.OK);
     }
+
+    @DeleteMapping("/{hrId}")
+    @PreAuthorize("hasAnyAuthority('admin', 'super-admin')")
+    public void deleteHRById(@PathVariable int hrId) {
+        hrService.removeHRById(hrId);
+    }
 }
