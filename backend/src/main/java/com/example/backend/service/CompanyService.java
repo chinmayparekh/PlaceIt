@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CompanyService {
-	private static final Logger logger = LogManager.getLogger(CompanyService.class);
+    private static final Logger logger = LogManager.getLogger(CompanyService.class);
     private static final int List = 0;
     private final CompanyRepository companyRepository;
 
@@ -28,8 +28,7 @@ public class CompanyService {
         return companyRepository.save(company);
     }
 
-    public List<Company> findAll()
-    {
+    public List<Company> findAll() {
         logger.info("Retrieving list of Companies");
         return companyRepository.findAll();
     }
@@ -37,10 +36,10 @@ public class CompanyService {
     public Integer getCompanyId(String companyName) {
         logger.info("Retrieving company by name: ", companyName);
         List<Company> allCompanies = findAll();
-        for(Company c: allCompanies){
-            System.out.println("Company in db:"+c.getCompanyName());
-//            System.out.println(c.getCompanyName().equals(companyName));
-            if(c.getCompanyName().equals(companyName)){
+        for (Company c : allCompanies) {
+            System.out.println("Company in db:" + c.getCompanyName());
+            // System.out.println(c.getCompanyName().equals(companyName));
+            if (c.getCompanyName().equals(companyName)) {
                 return c.getCompanyId();
             }
         }
