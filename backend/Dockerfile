@@ -12,9 +12,3 @@ EXPOSE 8081
 
 # Command to run the application when the container starts
 CMD ["java", "-jar", "app.jar"]
-# sudo docker build -t backend .
-# sudo docker run -it -p 8081:8081 --name backend_container backend sh
-#The above command wont be able to create the backend container because of its dependeny with MySQL
-
-# sudo docker-compose up
-# mysql -h 127.0.0.1 -P 3307 -u root -p
