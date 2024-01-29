@@ -30,35 +30,32 @@ public class JobStageController {
     @PostMapping("/add")
     @PreAuthorize("hasAnyAuthority('admin', 'super-admin')")
     public ResponseEntity<Job_Stage> addJobStage(@RequestBody Job_Stage jobStage) {
-        try
-        {
+        try {
             Job_Stage addedJobStage = jobStageService.addJobStage(jobStage);
             return new ResponseEntity<>(addedJobStage, HttpStatus.CREATED);
-        }
-        catch(EntityNotFoundException ex)
-        {
+        } catch (EntityNotFoundException ex) {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping("/add/studentsToNewStage")
     @PreAuthorize("hasAnyAuthority('admin','super-admin')")
-    public ResponseEntity<Boolean> addStudentsToJobStage(@RequestBody List<String> users,@RequestParam Integer jobId,@RequestParam Integer stage) throws  Exception{
+    public ResponseEntity<Boolean> addStudentsToJobStage(@RequestBody List<String> users, @RequestParam Integer jobId, @RequestParam Integer stage) throws Exception {
         try {
-            for(String userRollNumber:users){
-                System.out.println("USER WITH ROLL NUMBER BEING ADDED IS "+ userRollNumber);
+            for (String userRollNumber : users) {
+                System.out.println("USER WITH ROLL NUMBER BEING ADDED IS " + userRollNumber);
                 Job_Stage jobStage = new Job_Stage();
                 jobStage.setStage(stage);
                 jobStage.setJobId(jobId);
                 jobStage.setApplicantRollNumber(userRollNumber);
                 jobStageService.addJobStage(jobStage);
             }
-        }
-        catch ( Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
         return ResponseEntity.ok(true);
     }
+
     @GetMapping("/getByJobId")
     @PreAuthorize("hasAnyAuthority('admin', 'super-admin')")
     public ResponseEntity<List<Job_StageDTO>> getJobStagesByJobId(@RequestParam Integer jobId) {

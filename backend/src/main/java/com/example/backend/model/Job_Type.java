@@ -20,4 +20,6 @@ public class Job_Type {
 
     @Column(name = "job_type")
     private String jobType;
+
+
 }
